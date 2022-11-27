@@ -22,8 +22,8 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: test-image:latest
-          options: -v ${{ github.workspace }}:/zephyr
+          options: -v ${{ github.workspace }}:/app
       - uses: actions/upload-artifact@v3
         with:
           name: upload_artifacts
-          path: ${{ github.workspace }}/**
+          path: ~/**
