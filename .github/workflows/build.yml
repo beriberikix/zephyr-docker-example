@@ -23,7 +23,10 @@ jobs:
         with:
           image: test-image:latest
           options: -v ${{ github.workspace }}:/app
-      - uses: actions/upload-artifact@v3
-        with:
-          name: zephyr binary
-          path: /app/zephyr/zephyr.bin
+          run: |
+            pwd
+            ls
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: zephyr binary
+      #     path: /app/zephyr/zephyr.bin
