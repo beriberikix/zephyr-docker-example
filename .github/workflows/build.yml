@@ -9,7 +9,8 @@ on:
 
 jobs:
   build-container:
-    image: Dockerfile
+    container:
+      image: Dockerfile
 
     steps:
       - name: Setup Docker buildx
