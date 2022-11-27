@@ -1,0 +1,22 @@
+name: Build Zephyr binary
+
+on:
+  # schedule:
+  #   - cron: '24 8 * * *'
+  push:
+    branches: [ main ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build Zephyr binary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
+        with: ghcr.io/beriberikix/zephyr-arm:v3.2.0-0.15.2sdk
