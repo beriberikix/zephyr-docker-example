@@ -9,20 +9,4 @@ on:
 
 jobs:
   build-container:
-    name: Build Zephyr binary
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - uses: docker/build-push-action@v3
-        with:
-          tags: build-image:latest
-          push: false
-
-  build-binary:
-    name: Build Zephyr Binary
-    runs-on: ubuntu-latest
-    container: build-image:latest
-    steps:
-      - run: ls
+    image: Dockerfile
