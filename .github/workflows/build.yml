@@ -14,16 +14,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - uses: docker/build-push-action@v3
         with:
-          tags: test-image:latest
+          tags: build-image:latest
           push: false
-      - name: Run the build process with Docker
-        uses: addnab/docker-run-action@v3
+
+      - uses: actions/download-artifact@v3
         with:
-          image: test-image:latest
-          options: -v /github/workspace/${{ github.event.repository.name }}:/app
-      - uses: actions/upload-artifact@v3
-        with:
-          name: upload_artifacts
-          path: ~/**
+          name: my-artifact
+          path: /app/**
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: /app/**
+
+      # - name: Run the build process with Docker
+      #   uses: addnab/docker-run-action@v3
+      #   with:
+      #     image: build-image:latest
+      #     options: -v /github/workspace/${{ github.event.repository.name }}:/app
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: upload_artifacts
+      #     path: ~/**
