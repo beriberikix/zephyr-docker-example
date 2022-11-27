@@ -1,11 +1,8 @@
 name: Build Zephyr binary
 
 on:
-  # schedule:
-  #   - cron: '24 8 * * *'
   push:
     branches: [ main ]
-    # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ main ]
@@ -25,3 +22,8 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: test-image:latest
+          options: -v ${{ github.workspace }}:/app
+      - uses: actions/upload-artifact@v3
+        with:
+          name: zephyr binary
+          path: /app/zephyr/zephyr.bin
