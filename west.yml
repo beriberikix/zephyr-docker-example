@@ -1,0 +1,9 @@
+manifest:
+  projects:
+    - name: zephyr
+      revision: v3.2.0
+      url: https://github.com/zephyrproject-rtos/zephyr
+      import:
+        name-allowlist:
+          - cmsis
+          - hal_nordic
