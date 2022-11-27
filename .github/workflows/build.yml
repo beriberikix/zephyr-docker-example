@@ -11,6 +11,6 @@ jobs:
   build-container:
     image: Dockerfile
 
-  steps:
-    - name: Setup Docker buildx
-      uses: docker/setup-buildx-action@v2
+    steps:
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v2
