@@ -22,7 +22,7 @@ jobs:
 
   build-binary:
     name: Build Zephyr Binary
-    runs-on:
-    ubuntu-latest: build-image:latest
+    runs-on: ubuntu-latest
+    container: build-image:latest
     steps:
       - run: ls
