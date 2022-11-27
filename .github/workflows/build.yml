@@ -20,21 +20,13 @@ jobs:
           tags: build-image:latest
           push: false
 
-      - uses: actions/download-artifact@v3
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
         with:
-          name: my-artifact
-          path: /**
+          image: build-image:latest
+          options: -v /github/workspace/${{ github.event.repository.name }}:/app
 
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: /app/**
-
-      # - name: Run the build process with Docker
-      #   uses: addnab/docker-run-action@v3
-      #   with:
-      #     image: build-image:latest
-      #     options: -v /github/workspace/${{ github.event.repository.name }}:/app
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: upload_artifacts
-      #     path: ~/**
+      - uses: actions/upload-artifact@v3
+        with:
+          name: upload_artifacts
+          path: /github/workspace/${{ github.event.repository.name }}/**
