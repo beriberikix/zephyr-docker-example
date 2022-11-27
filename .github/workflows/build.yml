@@ -8,25 +8,17 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-ci:
     name: Build Zephyr binary
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       - uses: docker/build-push-action@v3
         with:
           tags: build-image:latest
           push: false
-
-      - name: Run the build process with Docker
-        uses: addnab/docker-run-action@v3
-        with:
-          image: build-image:latest
-          options: -v /github/workspace/${{ github.event.repository.name }}:/app
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: upload_artifacts
-          path: /github/workspace/${{ github.event.repository.name }}/**
