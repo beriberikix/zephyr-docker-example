@@ -9,11 +9,11 @@ on:
 
 jobs:
   build-container:
-    name: Build Container
+    name: Build Zephyr binary
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Docker Buildx
-      - uses: docker/setup-buildx-action@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - uses: docker/build-push-action@v3
         with:
