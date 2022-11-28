@@ -12,5 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Zephyr binary
     steps:
+      - uses: actions/checkout@v3
       - name: GH step
         uses: ./zephyr-container.yml
