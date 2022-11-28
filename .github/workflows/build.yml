@@ -13,4 +13,4 @@ jobs:
     name: Build Zephyr binary
     steps:
       - name: GH step
-      uses: zephyr-docker-example/zephyr-container
+        uses: zephyr-docker-example/zephyr-container
